@@ -104,3 +104,33 @@ fun8.apply(newobj.role , ["Nobody"])// in appy bind it is same as call but it wi
 let useLater = fun8.bind(newobj) // in bind we bind our funcntion with this reference only and use later
 useLater("okay")
 
+
+let number = 276;
+let ans  = 0;
+let arr = [];
+while(number!=0){
+    let digit = number % 10;
+    arr.unshift(digit);
+    ans = (ans*10) + digit;
+    number = Math.floor(number / 10);
+}
+
+
+//remove duplicate without using inbuilt method...................
+
+let numbers = [1,1,2,2,5,88,true, true , 88,9];
+let unique = [];
+
+for(let i=0;i<numbers.length; i++){
+    let duplicate = false;
+    for(let j=0; j<unique.length;j++){
+        if(numbers[i]===unique[j]){
+            duplicate =  true;
+            break;
+        }
+    }
+    if(!duplicate){
+        unique.push(numbers[i]);
+    }
+}
+console.log(unique);
