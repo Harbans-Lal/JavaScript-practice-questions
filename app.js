@@ -325,3 +325,194 @@ function cheakLeapYear(range){
 }
 let [yearsAre, rangeIs] = cheakLeapYear(100);
 console.log(`the range is ${rangeIs} and the leap years are ${yearsAre}`);
+
+
+// Count number of distinct pairs in the array whose sum exists in the given array: given an array A of N positive intefets , find the numver of distict pairs (A[i],[A[j]]) whose sum eits in the given array fro all 0 <= i < j < N.
+// Note: While repeating pairs will not be counted again. And we cannot make a pair using the same elements again eg: (2,1) and (1,2) will e considered as only one pair.
+// Input:
+// 7
+// 1 5 6 4 -1 5 10
+
+// where :
+// First line represts the number of elemmts in the array
+// Second linde represnts the elements in the array.
+
+let arr2 = [1 ,6,5 ,4 ,-1,5,10];
+function countDistinctPair(arr){
+    let count = 0;
+    let unique = new Set();
+    console.log(arr);
+    for(let i =0; i<arr.length;i++){
+        for(let j = i+1;j<arr.length; j++){
+            let val = arr[i]+arr[j];
+            if(arr.includes(val)){
+                count++;
+                console.log(`${arr[i]}${arr[j]}`);
+                unique.add(`${arr[i]}${arr[j]}`);
+            }
+        }   
+    }
+    console.log([...unique]);
+    return count;
+}
+console.log(countDistinctPair(arr2));
+
+
+//Find the prime number in an Array>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let arr7 = [1,2,3,5,7,8,9,10,11,12,13,14,15,16,17];
+
+function isPrime(arr){
+    let primeArr = [];
+    for(let val of arr){
+        let prme =  true;
+        for(let i=2; i<val; i++){
+            if(val%i ===0){
+                prme = false;
+            }
+        }
+        if(prme){
+            primeArr.push(val);
+        }
+    }
+    return primeArr
+}
+console.log(isPrime(arr7))
+
+//Remove duplicate from the string >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+let str2 = "Hello Wrold";
+let str3 = [...new Set(str2)];
+console.log(str3.join(""));
+
+// second method to remove duplicate from the String>>>>>>>>>>>>
+
+let uniqueStr = "";
+for(let i=0; i< str2.length; i++){
+    if(!uniqueStr.includes(str2[i])){
+        uniqueStr += str2[i];
+    }
+}
+console.log("uniqueString is:>>", uniqueStr);
+
+let uniqueStr1 = "";
+for(let val of str2){
+    if(!uniqueStr1.includes(val)){
+        uniqueStr1 += val;
+    }
+}
+console.log(uniqueStr1);
+
+//Find the array of sum and there half is in the array or not eg.>>>> arr is 1 , 2 , 3  in this case 1 + 2 + 3 = 6 and there half is 3 and 3 is in the array so output should be yes.
+
+let arr8 = [1,2,3,4,5];
+let half = arr8.reduce((acc, val) => acc + val/2,0);
+if(arr8.includes(half)){
+    console.log("Yes");
+}else{
+    console.log("It is not in the array");
+}
+
+//check a number is palindrom or not>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+function numberIsPalin(num){
+    let nummm = num;
+    let reverse  = "";
+    while(num != 0){
+      let  digit  = num%10;
+        reverse = (reverse*10)+digit;
+        num = Math.floor(num / 10);
+    }
+   console.log(nummm === reverse);
+}
+
+// Replace every element of the array with the greatest elemtnson its left isde :
+// Note: Replace the first element with -1 as it has no elemtn in its left
+// Input:
+// 6
+// 4 5 2 1 7 6
+// where:
+// First line represents the number of elements in the Array.
+// Second line represents the elements  in the arry:
+// Output:
+// -1 4 5 5 5 7 
+
+let arr9 = [4 , 5 , 2 , 1 , 7 , 6];
+let opArr =[];
+
+for(i=0; i<arr9.length-1; i++){
+    opArr[0] = -1;
+    let great = Number.MIN_SAFE_INTEGER;
+    for(let j=0; j<=i; j++){
+        if(arr9[j]>great){
+            great = arr9[j]
+            
+        }
+    }
+    opArr.push(great)
+}
+
+console.log(opArr);
+console.log(arr9);
+
+//Number of Substring divisible by 6
+// Givin a string S consisting of integers 0 to 9  , find the number of substrngs which are divisble by 6 , substrng does not contain leadin Zerros.
+// Input:
+// 606
+// output:
+// 5
+// explainaiotn:
+//  substring: "6" , "0" ,"6",  "60", "606" are divisible by 6
+
+let str4 = "606";
+let arr10 = [];
+for(let i=0; i<str4.length; i++){
+    arr10.push(str4[i])
+}
+console.log("later work",arr10);
+
+// Check wheatehr a strin is suffix of another 
+// Given two strings s1 and s2 check wheatehr s1 is a suffix of s2 ie check wheather string s2 ends with string s1.
+// input :
+// code 
+// coderscode
+// output:
+// Yes
+
+function suffixStr(s1, s2){
+    let s2Len = s2.length-1;
+    let empStr1 = "";
+    let empStr2 = "";
+
+    for(i=s1.length-1; i>=0; i--){
+        empStr1 += s1[i];
+        empStr2 += s2[s2Len];
+        s2Len -- ;
+    }
+   
+   if(empStr1 === empStr2){
+    console.log("yes");
+   }else{
+    console.log("NO");
+   }
+
+}
+console.log(suffixStr("code","coderscode"));
+
+//Count array elements that divide sum of all other element:>>>>>>>>>>>>>>>>>>>>>>>>>
+
+let arr11 = [ 3,10,4,6,7];
+let divisible = 0;
+for(let val of arr11){
+    let sum = 0;
+
+    for(let i=0; i<arr11.length; i++){
+        if(arr11[i]!== val){
+            sum += arr11[i];
+        }
+    }
+    if(sum % val===0){
+        divisible++;
+    }
+}
+console.log(divisible);
+
