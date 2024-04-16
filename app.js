@@ -516,3 +516,185 @@ for(let val of arr11){
 }
 console.log(divisible);
 
+
+// Delete from array if multiple of 5>>>>>>>>>>>>>>>>>>>>.
+
+let arr12 = [2,3,4,11,22,320];
+let outputArr = arr12.filter(val => val%5 !==0);
+console.log(outputArr);
+
+
+let outputArr1 = [];
+
+for(let val of arr12){
+    if(val%5 !==0){
+        outputArr1.push(val);
+    }
+}
+
+console.log("output array two>>>>>>>>>>", outputArr1);
+
+let outputArr2 = [...arr12];
+
+for(let i=0; i<outputArr2.length; i++){
+    if(outputArr2[i]%5===0){
+        outputArr2.splice(i,1);
+    }
+}
+console.log(outputArr2);
+
+function delteArrayIndexK(arr, k){
+    let res = arr.filter((val, ind) => ind !== k );
+    console.log(res);
+}
+delteArrayIndexK(outputArr2,4);
+
+
+//Remove all occurence of word>>>>>>>>>>>>>>>
+// input: 
+// Hello world Hello Hello 
+// output:
+// world
+
+function rmOccu(str, wrod){
+    let res = str.split(" ").filter((val, ind) => val !== wrod).join(" ");
+    console.log(res);
+}
+rmOccu("hello wrold hello", "wrold");
+
+let jjj  = "hello world";
+let stringLength = 0;
+
+for(let val of jjj){
+    stringLength ++;
+}
+
+console.log(stringLength);
+
+
+// Number of unique pairs in an Array>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// input : 
+// 3 
+//  1 1 2
+//  output:
+//  4
+//  explanation:(1 ,1 ), (1,2) , (2 , 1) and (2 , 2) are the unique pairs , therir count is 4, hence the output 4.
+
+let arr3 = [1 , 1 , 2];
+let arrPair = [];
+
+for(let val of arr3){
+    for(let val1 of arr3){
+        let arr = [];
+        arr.push(`${val}${val1}`);
+        arrPair.push(arr);
+
+    }
+}
+
+console.log("all pair>>>>", arrPair );
+
+let uniqueArrPair =JSON.stringify(arrPair);
+
+let tempp = uniqueArrPair.slice(1, uniqueArrPair.length-1);
+
+let tempp2 = tempp.split(",");
+let finalUnique = [... new Set(tempp2)];
+console.log("the final unique pair is:",finalUnique,"and the length is:", finalUnique.length);
+
+// ***** Easy method>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+let uniqueArr = [];
+for(let val of arr3){
+    for(let val1 of arr3){
+        let combo = `${val},${val1}`;
+        if(!uniqueArr.includes(combo)){
+            uniqueArr.push(combo);
+        }
+    }
+}
+console.log("easy way>>>>>>>>>>>",uniqueArr);
+
+//Replace every element with its previous element>>>>>>>>>>>>>>>>>>>>> replace the first element with -1.
+
+let arr1 = [1 ,2 ,3,4];
+let prevElArr = [];
+
+for(let i=1; i<arr1.length; i++){
+    prevElArr[0] = -1;
+    for(let j=1; j<=i;j++){
+        prevElArr[i] = arr1[i-1];
+    }
+}
+console.log(prevElArr);
+
+
+//Sove the sum array puzzle and print the sum of arra>>>>
+// Given an array A of N interfs . construct a Sum Array S(fo smae size) such that S[i] is equal to thte sum of all the elements of A except A[i];
+// Input:
+// 5
+// 3 6 4  8 9
+
+// output:
+// 27 24 26 22 21
+let ourArr = [3,6,4,8,9];
+let resArr = [];
+let sum = 0;
+
+for(let val of ourArr){
+    sum += val;
+}
+
+for(let i=0; i<ourArr.length; i++){
+    resArr[i] = sum - ourArr[i];
+}
+
+console.log(">>>>>>>result is >>>>>>",resArr,"original array is:", ourArr);
+//Rotate an array to right side>>>>>>>>>>>>>>>>>>>
+// Input : 
+// 10
+// 10 20 30 40 50 60 70 80 90 100
+// 3
+
+// where:
+// first line represtn the nubmer of Element
+// Second line represent the element in the Array
+// Third line represent the value of k (numbe of time to rotate the array ti right side)
+
+// output:
+// 80 90 100 10 20 30 40 50 60 70
+let arr14 = [10 ,20, 30, 40 ,50, 60, 70 ,80 ,90 ,100];
+function rtrArr(arr, k){
+   for(let i=0; i<k; i++){
+    let lastVal = arr.pop();
+    arr.unshift(lastVal)
+   }
+   return arr;
+}
+console.log(arr14);
+console.log(rtrArr(arr14,5));
+
+
+
+//a substring is a contiguous sequence of characters within a string........
+
+//Question: Count substirng witht same first and last characters>>>>>>>>>>>>>>>>>>>>>>.
+// input:
+// abcab
+// output:
+// 7
+
+// explaonaiton: ther eare 15 substring : a, ab , abc, abca, abcab, b, bc, bca, bcab, c, ca, cab, a, ab, b
+// outof which: a, abca, b, bcab, c, a and b  satrtrin and ending with the same character
+
+let inpStr = "abcab";
+let substirngArr = [];
+for(let i=0; i<inpStr.length; i++){
+    let str = "";
+    for(let j=i; j<inpStr.length; j++){
+        str +=  inpStr[j];
+        substirngArr.push(str);
+    }
+}
+console.log("substirgn array is:>>>>>>", substirngArr);
