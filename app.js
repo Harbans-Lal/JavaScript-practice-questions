@@ -698,3 +698,38 @@ for(let i=0; i<inpStr.length; i++){
     }
 }
 console.log("substirgn array is:>>>>>>", substirngArr);
+
+
+//add number  digit>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+function addDigit(num){
+    while(num>=10){
+        let f = Math.floor(num / 10);
+        let s = num % 10;
+        num = f + s;
+    }
+    console.log(num);
+}
+
+addDigit(38);
+
+//check is number has power of 3 or not >>>>>>>>>>>>>>>.
+
+var isPowerOfThree = function(n) {
+    while(n>=3){
+        if(n%3==0){
+            n = n / 3
+        }else{
+            break;
+        }
+    }
+    if(n===1){
+        return true;
+    }else if(n<=0){
+        return false;
+    }else{
+        return false; //45
+    }
+};
+
+isPowerOfThree(27)
